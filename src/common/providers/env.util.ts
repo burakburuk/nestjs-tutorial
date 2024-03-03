@@ -1,16 +1,19 @@
 import { existsSync } from 'fs';
-import { resolve } from 'path';
+import { dirname, join } from 'path';
 
-export function getEnvPath(dest: string): string {
+const appDir = dirname(require.main.filename);
+const dest = join(appDir, 'common', 'envs');
+
+export function getEnvPath(): string {
   const env: string | undefined = process.env.NODE_ENV;
 
-  const local: string = resolve(`${dest}/.env`);
+  const local: string = join(dest, '.env');
   if (local && existsSync(local)) {
     return local;
   }
 
   const filename: string = env ? `${env}.env` : '.env';
-  const filePath: string = resolve(`${dest}/${filename}`);
+  const filePath: string = join(dest, filename);
 
   if (!existsSync(filePath)) {
     throw new Error('Env Config could not be found!');

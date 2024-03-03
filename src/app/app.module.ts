@@ -16,7 +16,7 @@ import { getDbConfig } from '../common/providers/db-config.util';
     AuthModule,
     HealthModule,
     ConfigModule.forRoot({
-      envFilePath: getEnvPath(`${__dirname}/../common/envs`),
+      envFilePath: getEnvPath(),
       cache: true,
       isGlobal: true,
     }),

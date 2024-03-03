@@ -2,7 +2,7 @@ import { getEnvPath } from './env.util';
 import { DataSourceOptions } from 'typeorm/data-source/DataSourceOptions';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config({ path: [getEnvPath(`${__dirname}/../envs`)] });
+require('dotenv').config({ path: [getEnvPath()] });
 
 // This functions is being used to get the database configuration
 // for both the migration and the application.
